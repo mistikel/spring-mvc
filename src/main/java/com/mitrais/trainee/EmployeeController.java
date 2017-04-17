@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class EmployeeController
 {
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<Employee>();
     public EmployeeController(){
-        employees = new ArrayList<Employee>();
         employees.add(new Employee("Agus Mistiawan","Male","Jakarta"));
         employees.add(new Employee("Haifludin","Male","Jakarta"));
         employees.add(new Employee("Jacqualine","Female","Jakarta"));
