@@ -5,12 +5,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Employee{
+    private String id;
     private String name;
     private String gender;
     private String privilage;
     
-    public Employee( String name, String gender, String privilage){
-
+    public Employee(String id, String name, String gender, String privilage){
+        this.id = id;
         this.name = name;
         this.gender = gender;
         this.privilage = privilage;
@@ -18,6 +19,10 @@ public class Employee{
 
     public Employee(){
         
+    }
+
+    public void setId(String id){
+        this.id = id;
     }
     public void setName(String name){
         this.name = name;
@@ -29,6 +34,10 @@ public class Employee{
 
     public void setPrivilage(String privilage){
         this.privilage = privilage;
+    }
+
+    public String getId(){
+        return this.id;
     }
 
     public String getName(){

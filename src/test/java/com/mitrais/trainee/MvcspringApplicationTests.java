@@ -16,14 +16,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 public class MvcspringApplicationTests {
 
 	private MockMvc mockMvcEmployee;
-	private MockMvc mockMvcHello;
-
-	@Before
-	public void setup(){
-		this.mockMvcHello = MockMvcBuilders
-			.standaloneSetup(new HelloController())
-			.build();
-	}
 
 	@Before
 	public void setupEmployees(){
@@ -31,18 +23,17 @@ public class MvcspringApplicationTests {
 		.standaloneSetup(new EmployeeController())
 		.build();
 	}
-
-	@Test
-	public void getMessage() throws Exception{
-		this.mockMvcHello.perform(get("/hello"))
-		.andExpect(status().isOk());
-	}
-
 	@Test
 	public void getEmployee() throws Exception{
 		String result = "[{\"name\": \"Jacqualine\",\"gender\": \"Female\",\"privilage\": \"Jakarta\"}]";
 		this.mockMvcEmployee.perform(get("/employees?gender=Female"))
 		.andExpect(content().json(result));
+	}
+
+	@Test
+	public void getEmployeeById() throws Exception{
+		this.mockMvcEmployee.perform(put("/employees/12"))
+		.andExpect(status().isNotFound());
 	}
 
 	@Test
